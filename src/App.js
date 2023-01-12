@@ -1,6 +1,15 @@
 import "./App.css";
 import { useState } from "react";
 
+/**
+ * 카멜케이스의 대문자 앞에 공백을 넣어줍니다.
+ * @param {*} colorName
+ * @returns
+ */
+export const replaceCamelWithSpaces = (colorName) => {
+	return colorName.replace(/\B([A-Z])\B/g, " $1");
+};
+
 function App() {
 	const [btnColor, setBtnColor] = useState("red");
 	const [isChecked, setIsChecked] = useState(false);

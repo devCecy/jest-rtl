@@ -1,6 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 
+import { replaceCamelWithSpaces } from "./App";
+
 test("버튼의 초기 색상이 올바른지 확인하고, 버튼 클릭 시 업데이트합니다", () => {
 	render(<App />);
 	const colorBtn = screen.getByRole("button", { name: "Change to blue" });
@@ -59,4 +61,20 @@ test("버튼 비활성화 시 버튼 색은 gray로 바뀐다.", () => {
 	// 다시 버튼을 활성화시키면, 버튼색은 blue다
 	fireEvent.click(checkbox);
 	expect(colorBtn).toHaveStyle({ backgroundColor: "blue" });
+});
+
+describe("카멜케이스의 대문자 앞에 스페이스가 생성됩니다.", () => {
+	test("대문자가 없을 경우", () => {
+		expect(replaceCamelWithSpaces("Red")).toBe("Red");
+	});
+
+	test("대문자가 하나일 경우", () => {
+		expect(replaceCamelWithSpaces("MidnightBlue")).toBe("Midnight Blue");
+	});
+
+	test("대문자가 여러개인 경우", () => {
+		expect(replaceCamelWithSpaces("MidnightVioletRed")).toBe(
+			"Midnight Violet Red"
+		);
+	});
 });
