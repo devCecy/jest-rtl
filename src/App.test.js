@@ -27,7 +27,7 @@ test("체크박스의 상태에따라 버튼의 활성화 여부가 결정됩니
 	render(<App />);
 
 	// 체크박스가 체크되면, 버튼은 비활성화된다.
-	const checkbox = screen.getByRole("checkbox");
+	const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
 	const colorBtn = screen.getByRole("button", { name: "Change to blue" });
 
 	fireEvent.click(checkbox);
