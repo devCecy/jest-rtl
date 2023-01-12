@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [btnColor, setBtnColor] = useState("red");
+	const newBtnColor = btnColor === "red" ? "blue" : "red";
+
+	// const [isChecked, setIsChecked] = useState(false);
+	return (
+		<div>
+			<button
+				// disabled={isChecked}
+				style={{ backgroundColor: btnColor }}
+				onClick={() => setBtnColor(newBtnColor)}
+			>
+				Change to {newBtnColor}
+			</button>
+		</div>
+	);
 }
 
 export default App;
