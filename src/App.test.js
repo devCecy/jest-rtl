@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import App, { MidnightBlue, MidnightVioletRed } from "./App";
+import App from "./App";
 
 import { replaceCamelWithSpaces } from "./App";
 
@@ -9,12 +9,12 @@ test("버튼의 초기 색상이 올바른지 확인하고, 버튼 클릭 시 �
 		name: "Change to Midnight Blue",
 	});
 
-	expect(colorBtn).toHaveStyle({ backgroundColor: MidnightVioletRed });
+	expect(colorBtn).toHaveStyle({ backgroundColor: "MediumSeaGreen" });
 
 	// 버튼을 클릭했을 때,
 	fireEvent.click(colorBtn);
-	expect(colorBtn).toHaveStyle({ backgroundColor: MidnightBlue });
-	expect(colorBtn).toHaveTextContent("Change to Midnight Violet Red");
+	expect(colorBtn).toHaveStyle({ backgroundColor: "MidnightBlue" });
+	expect(colorBtn).toHaveTextContent("Change to Medium Sea Green");
 });
 
 test("체크박스의 초기조건을 테스트합니다.", () => {
@@ -55,11 +55,13 @@ test("버튼 비활성화 시 버튼 색은 gray로 바뀐다.", () => {
 
 	// 버튼이 비활성화되면, 버튼색은 gray로 변한다.
 	fireEvent.click(checkbox);
-	expect(colorBtn).toHaveStyle({ backgroundColor: MidnightVioletRed });
+	expect(colorBtn).toHaveStyle({ backgroundColor: "midiumseagreen" });
 
-	// 버튼이 활성화되면, 버튼색은 MidnightVioletRed로 변한다.
+	// 버튼이 활성화되면, 버튼색은 midiumseagreen 변한다.
 	fireEvent.click(checkbox);
-	expect(colorBtn).toHaveStyle({ backgroundColor: MidnightVioletRed });
+	expect(colorBtn).toHaveStyle({
+		backgroundColor: "midiumseagreen",
+	});
 
 	// 버튼을 클릭해서 색을 변경하고, 버튼을 비활성화시키면 버튼이 gray가 된다.
 	fireEvent.click(colorBtn);
@@ -68,7 +70,7 @@ test("버튼 비활성화 시 버튼 색은 gray로 바뀐다.", () => {
 
 	// 다시 버튼을 활성화시키면, 버튼색은 MidnightBlue이다.
 	fireEvent.click(checkbox);
-	expect(colorBtn).toHaveStyle({ backgroundColor: MidnightBlue });
+	expect(colorBtn).toHaveStyle({ backgroundColor: "MidnightBlue" });
 });
 
 describe("카멜케이스의 대문자 앞에 스페이스가 생성됩니다.", () => {
@@ -77,12 +79,10 @@ describe("카멜케이스의 대문자 앞에 스페이스가 생성됩니다.",
 	});
 
 	test("대문자가 하나일 경우", () => {
-		expect(replaceCamelWithSpaces(MidnightBlue)).toBe("Midnight Blue");
+		expect(replaceCamelWithSpaces("MidnightBlue")).toBe("Midnight Blue");
 	});
 
 	test("대문자가 여러개인 경우", () => {
-		expect(replaceCamelWithSpaces(MidnightVioletRed)).toBe(
-			"Midnight Violet Red"
-		);
+		expect(replaceCamelWithSpaces("MediumSeaGreen")).toBe("Medium Sea Green");
 	});
 });

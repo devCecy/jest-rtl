@@ -1,8 +1,6 @@
 import "./App.css";
 import { useState } from "react";
 
-export const MidnightBlue = "MidnightBlue";
-export const MidnightVioletRed = "MidnightVioletRed";
 /**
  * 카멜케이스의 대문자 앞에 공백을 넣어줍니다.
  * @param {*} colorName
@@ -13,10 +11,10 @@ export const replaceCamelWithSpaces = (colorName) => {
 };
 
 function App() {
-	const [btnColor, setBtnColor] = useState(MidnightVioletRed);
+	const [btnColor, setBtnColor] = useState("MediumSeaGreen");
 	const [isChecked, setIsChecked] = useState(false);
 	const newBtnColor =
-		btnColor === MidnightVioletRed ? MidnightBlue : MidnightVioletRed;
+		btnColor === "MediumSeaGreen" ? "MidnightBlue" : "MediumSeaGreen";
 
 	return (
 		<div>
@@ -27,7 +25,7 @@ function App() {
 			>
 				Change to {replaceCamelWithSpaces(newBtnColor)}
 			</button>
-			<label htmlFor="disabled-button-checkbox">Disable button</label>;
+			<label htmlFor="disabled-button-checkbox">Disable button</label>
 			<input
 				type="checkbox"
 				id="disabled-button-checkbox"
