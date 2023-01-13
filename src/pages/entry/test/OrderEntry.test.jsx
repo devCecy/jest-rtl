@@ -1,6 +1,10 @@
-import { render, screen, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import { server } from "../../../mocks/server";
+import {
+	render,
+	screen,
+	waitFor,
+} from "../../../test-utils/testing-library-utils";
 import OrderEntry from "../OrderEntry";
 
 test("토핑과 스쿱 api에러가 발생하면 에러 alert이 발생합니다.", async () => {
