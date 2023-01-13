@@ -1,10 +1,9 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
 
-import { replaceCamelWithSpaces } from "./App";
+import ColorBtn, { replaceCamelWithSpaces } from "../ColorBtn";
 
 test("버튼의 초기 색상이 올바른지 확인하고, 버튼 클릭 시 업데이트합니다", () => {
-	render(<App />);
+	render(<ColorBtn />);
 	const colorBtn = screen.getByRole("button", {
 		name: "Change to Midnight Blue",
 	});
@@ -19,7 +18,7 @@ test("버튼의 초기 색상이 올바른지 확인하고, 버튼 클릭 시 �
 
 test("체크박스의 초기조건을 테스트합니다.", () => {
 	// 체크박스의 초기조건은 활성화 상태이다.
-	render(<App />);
+	render(<ColorBtn />);
 	const colorBtn = screen.getByRole("button", {
 		name: "Change to Midnight Blue",
 	});
@@ -30,7 +29,7 @@ test("체크박스의 초기조건을 테스트합니다.", () => {
 });
 
 test("체크박스의 상태에따라 버튼의 활성화 여부가 결정됩니다.", () => {
-	render(<App />);
+	render(<ColorBtn />);
 
 	// 체크박스가 체크되면, 버튼은 비활성화된다.
 	const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
@@ -47,7 +46,7 @@ test("체크박스의 상태에따라 버튼의 활성화 여부가 결정됩니
 });
 
 test("버튼 비활성화 시 버튼 색은 gray로 바뀐다.", () => {
-	render(<App />);
+	render(<ColorBtn />);
 	const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
 	const colorBtn = screen.getByRole("button", {
 		name: "Change to Midnight Blue",
